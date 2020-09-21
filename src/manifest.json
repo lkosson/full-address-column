@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Full Address column",
+  "description": "Adds a full sender and recipient e-mail column to message list panel",
+  "version": "1.0.0",
+  "author": "Łukasz Kosson",
+  "applications": {
+    "gecko": {
+      "id": "full-address-column@lukasz.kosson.net",
+      "strict_min_version": "68.0a1"
+    }
+  },
+  "experiment_apis": {
+    "FAC": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          ["FAC"]
+        ],
+        "script": "experiments.js",
+        "events": ["startup"]
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "icons": {
+    "48": "icon48.png"
+  }
+}

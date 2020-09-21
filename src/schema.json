@@ -1,0 +1,20 @@
+[
+  {
+    "namespace": "FAC",
+    "functions": [
+      {
+        "name": "addWindowListener",
+        "type": "function",
+        "description": "Adds a listener 3pane windows",
+        "async": false,
+        "parameters": [
+          {
+            "name": "dummy",
+            "type": "string",
+            "description": "dummy"
+          }
+        ]
+      }
+    ]  
+  }
+]
