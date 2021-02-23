@@ -24,7 +24,8 @@ const recipientColumnHandler = {
   getRowProperties(row, props) {},
   getImageSrc(row, col) { return null; },
   getSortLongForRow(hdr) { return 0; },
-  getAddress(aHeader) { return aHeader.recipients.replace(/.*</, "").replace(/>.*/, ""); },
+  formatAddress(acc, val) { return (acc == "" ? "" : acc + ", ") + (val.includes(">") ? [...val.matchAll(/[^<]+(?=>)/g)].join(', ') : val); },
+  getAddress(aHeader) { return aHeader.recipients.split(',').reduce(this.formatAddress, ""); },
 };
 
 const columnOverlay = {
