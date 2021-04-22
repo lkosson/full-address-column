@@ -3,9 +3,11 @@
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
+var MSG_VIEW_FLAG_DUMMY = 0x20000000;
+
 const senderColumnHandler = {
   init(win) { this.win = win; },
-  getCellText(row, col) { return this.getAddress(this.win.gDBView.getMsgHdrAt(row)); },
+  getCellText(row, col) { return this.isDummy(row) ? "" : this.getAddress(this.win.gDBView.getMsgHdrAt(row)); },
   getSortStringForRow(hdr) { return this.getAddress(hdr); },
   isString() { return true; },
   getCellProperties(row, col, props) {},
@@ -13,11 +15,12 @@ const senderColumnHandler = {
   getImageSrc(row, col) { return null; },
   getSortLongForRow(hdr) { return 0; },
   getAddress(aHeader) { return aHeader.author.replace(/.*</, "").replace(/>.*/, ""); },
+  isDummy(row) { return (this.win.gDBView.getFlagsAt(row) & MSG_VIEW_FLAG_DUMMY) != 0; }
 };
 
 const recipientColumnHandler = {
   init(win) { this.win = win; },
-  getCellText(row, col) { return this.getAddress(this.win.gDBView.getMsgHdrAt(row)); },
+  getCellText(row, col) { return this.isDummy(row) ? "" : this.getAddress(this.win.gDBView.getMsgHdrAt(row)); },
   getSortStringForRow(hdr) { return this.getAddress(hdr); },
   isString() { return true; },
   getCellProperties(row, col, props) {},
@@ -26,6 +29,7 @@ const recipientColumnHandler = {
   getSortLongForRow(hdr) { return 0; },
   formatAddress(acc, val) { return (acc == "" ? "" : acc + ", ") + (val.includes(">") ? [...val.matchAll(/[^<]+(?=>)/g)].join(', ') : val); },
   getAddress(aHeader) { return aHeader.recipients.split(',').reduce(this.formatAddress, ""); },
+  isDummy(row) { return (this.win.gDBView.getFlagsAt(row) & MSG_VIEW_FLAG_DUMMY) != 0; }
 };
 
 const columnOverlay = {
