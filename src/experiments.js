@@ -2,7 +2,9 @@
 // GNU General Public License, version 3.0.
 
 "use strict";
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 var { ExtensionSupport } = ChromeUtils.import('resource:///modules/ExtensionSupport.jsm');
 var { ExtensionParent } = ChromeUtils.import('resource://gre/modules/ExtensionParent.jsm');
 
