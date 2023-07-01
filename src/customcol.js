@@ -1,7 +1,9 @@
 // This Source Code Form is subject to the terms of the
 // GNU General Public License, version 3.0.
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 
 var MSG_VIEW_FLAG_DUMMY = 0x20000000;
 
