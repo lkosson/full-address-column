@@ -4,10 +4,11 @@
   "description": "Adds a full sender and recipient e-mail column to message list panel",
   "version": "1.1.0",
   "author": "Łukasz Kosson",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "full-address-column@lukasz.kosson.net",
-      "strict_min_version": "115"
+      "strict_min_version": "115.10.0",
+      "strict_max_version": "127.*"
     }
   },
   "background": {
