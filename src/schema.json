@@ -1,0 +1,26 @@
+[
+  {
+    "namespace": "customColumns",
+    "functions": [
+      {
+        "name": "add",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id"
+          },
+          {
+            "type": "string",
+            "name": "name"
+          },
+          {
+            "type": "string",
+            "name": "field"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -6,7 +6,8 @@
   "author": "Łukasz Kosson",
   "applications": {
     "gecko": {
-      "id": "full-address-column@lukasz.kosson.net"
+      "id": "full-address-column@lukasz.kosson.net",
+      "strict_min_version": "115"
     }
   },
   "background": {
@@ -17,7 +18,20 @@
   "icons": {
     "48": "icon48.png"
   },
-  "permissions": [
-    "messagesRead"
-  ]
+  "experiment_apis": {
+    "customColumns": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "customColumns"
+          ]
+        ],
+        "script": "implementation.js"
+      }
+    }
+  }
 }
