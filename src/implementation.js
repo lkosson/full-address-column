@@ -32,7 +32,6 @@ var customColumns = class extends ExtensionCommon.ExtensionAPI {
             icon: false,
             resizable: true,
             sortable: true,
-            sortCallback: callback,
             textCallback: callback
           });
         },
