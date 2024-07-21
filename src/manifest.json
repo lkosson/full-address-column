@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Full Address column",
-  "description": "Adds a full sender and recipient e-mail column to message list panel",
-  "version": "1.1.2",
+  "description": "Adds sender and recipient full e-mail and domain columns to message list panel",
+  "version": "1.2.0",
   "author": "Łukasz Kosson",
   "browser_specific_settings": {
     "gecko": {
