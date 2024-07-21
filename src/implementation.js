@@ -1,17 +1,11 @@
-var ExtensionCommon;
-var ExtensionSupport;
 var ThreadPaneColumns;
 try
 {
   ({ ThreadPaneColumns } = ChromeUtils.importESModule("chrome://messenger/content/thread-pane-columns.mjs"));
-  ({ ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm"));
-  ({ ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm"));
 }
 catch (err)
 {
   ({ ThreadPaneColumns } = ChromeUtils.importESModule("chrome://messenger/content/ThreadPaneColumns.mjs"));
-  ({ ExtensionCommon } = ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs"));
-  ({ ExtensionSupport } = ChromeUtils.importESModule("resource:///modules/ExtensionSupport.sys.mjs"));
 }
 
 const ids = [];
