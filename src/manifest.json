@@ -8,7 +8,7 @@
     "gecko": {
       "id": "full-address-column@lukasz.kosson.net",
       "strict_min_version": "115.10.0",
-      "strict_max_version": "129.*"
+      "strict_max_version": "131.*"
     }
   },
   "background": {
