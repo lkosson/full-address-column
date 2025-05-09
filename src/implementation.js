@@ -39,6 +39,10 @@ var customColumns = class extends ExtensionCommon.ExtensionAPI {
               return fn__address_to_domain(extract_unique_normalized_addresses(message.author)[0]);
             },
 
+            sender_reverse_domain: function (message) {
+              return fn__address_to_domain(extract_unique_normalized_addresses(message.author)[0]).split('.').reverse().join('.');
+            },
+
             recipients: function (message) {
               return extract_unique_normalized_addresses(message.recipients).join(', ')
             },
