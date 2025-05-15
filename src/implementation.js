@@ -16,6 +16,7 @@ const fn__string_to_addresses = mail_string => mail_string.replaceAll(/".*?"/g, 
 const fn__normalize_address = mail => mail.replace(/^.*?</, '').replace(/>.*$/, '').trim()
 
 const fn__address_to_domain = x => x.replace(/^.*@/, '')
+const fn__reverse_domain = x => x.split('.').reverse().join('.')
 
 const extract_unique_normalized_addresses = addresses_string => fn__deduplicate(fn__string_to_addresses(addresses_string).map(x => fn__normalize_address(x)))
 const extract_unique_domains = addresses_string => fn__deduplicate(extract_unique_normalized_addresses(addresses_string).map(x => fn__address_to_domain(x)))
@@ -40,7 +41,7 @@ var customColumns = class extends ExtensionCommon.ExtensionAPI {
             },
 
             sender_reverse_domain: function (message) {
-              return fn__address_to_domain(extract_unique_normalized_addresses(message.author)[0]).split('.').reverse().join('.');
+              return fn__reverse_domain(fn__address_to_domain(extract_unique_normalized_addresses(message.author)[0]));
             },
 
             recipients: function (message) {
