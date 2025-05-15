@@ -18,7 +18,7 @@ const fn__normalize_address = mail => mail.replace(/^.*?</, '').replace(/>.*$/, 
 const fn__address_to_domain = x => x.replace(/^.*@/, '')
 
 const extract_unique_normalized_addresses = addresses_string => fn__deduplicate(fn__string_to_addresses(addresses_string).map(x => fn__normalize_address(x)))
-const extract_unique_domains = addresses_string => fn__deduplicate(extract_unique_normalized_addresses(addresses_string).map(x => fn__address_to_domain(x)))
+const extract_unique_domains = addresses_string => extract_unique_normalized_addresses(addresses_string).map(x => fn__address_to_domain(x))
 
 var customColumns = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
