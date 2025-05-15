@@ -51,6 +51,10 @@ var customColumns = class extends ExtensionCommon.ExtensionAPI {
             recipients_domains: function (message) {
               return extract_unique_domains(message.recipients).join(', ')
             },
+
+            recipients_reverse_domains: function (message) {
+              return extract_unique_domains(message.recipients).map(x => fn__reverse_domain(x)).join(', ')
+            },
           }
 
           ThreadPaneColumns.addCustomColumn(id, {
